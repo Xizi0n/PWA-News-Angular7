@@ -21,6 +21,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { SliderComponent } from './slider/slider.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HeaderComponent } from './header/header.component';
+import { CoreModule } from './core/core.module';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 const config = {
@@ -39,7 +41,8 @@ const config = {
     RegistrationComponent,
     SliderComponent,
     WelcomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ const config = {
     MatGridListModule,
     MatIconModule,
     MatInputModule,
-    MatToolbarModule
+    MatToolbarModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

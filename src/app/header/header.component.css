@@ -1,0 +1,15 @@
+.maxwidth {
+    width: 100% !important;
+    margin: 0;
+}
+
+.left-margin {
+    margin-left: 12px;
+}
+
+.mat-button {
+    font-size: 0.9em;
+}
+.spacer {
+    flex: 1 1 auto;
+}

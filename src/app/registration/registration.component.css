@@ -1,0 +1,41 @@
+.maxwidth {
+    width: 100%;
+}
+
+.formAlign {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+}
+
+.borderlogin {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.topmargin {
+    margin-top: 15%;
+}
+
+mat-form-field {
+    display: block;
+}
+
+h4 {
+    margin: 0;
+    font-size: 2em;
+    padding: 30px;
+}
+p {
+    margin-top: 20px;
+}
+
+button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.3em;
+}

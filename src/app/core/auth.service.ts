@@ -30,14 +30,14 @@ export class AuthService {
               private afs: AngularFirestore,
               private router: Router) {
 
-    this.user = this.afAuth.authState
+    /*this.user = this.afAuth.authState
       .switchMap( user => {
         if (user) {
           return this.afs.doc<User>(`users/${user.email}`).valueChanges();
         } else {
           return Observable.of(null);
         }
-      });
+      });*/
   }
 
   googleLogin() {

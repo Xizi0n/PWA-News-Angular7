@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 // Material
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -23,6 +24,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { HeaderComponent } from './header/header.component';
 import { CoreModule } from './core/core.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NewsService } from './news.service';
+import { News } from './model/news.model';
 
 
 const config = {
@@ -49,6 +52,7 @@ const config = {
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
+    HttpClientModule,
     AppRoutingModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -58,7 +62,9 @@ const config = {
     MatToolbarModule,
     CoreModule
   ],
-  providers: [],
+  providers: [
+    NewsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

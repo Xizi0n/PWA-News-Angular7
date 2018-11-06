@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { News } from './model/news.model';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  result: News[] = [];
+  result = [];
 
 
   getNews(): News[] {
@@ -23,10 +24,18 @@ export class NewsService {
     this.http.get(this.testUrl)
       .subscribe( data => {
         data.articles.forEach(element => {
-          const temp = new News(element.author, element.title, element.description,
+          /*const temp = new News(element.author, element.title, element.description,
                           element.content, element.publishedAt, element.source,
-                          element.url, element.urlToImage);
-        this.result.push(temp);
+                          element.url, element.urlToImage);*/
+
+          if (element.urlToImage !== undefined && element.urlToImage !== null ) {
+            const temp = {
+              img: element.urlToImage,
+              alt: '',
+              text: element.title
+            };
+            this.result.push(temp);
+          }
         });
         console.log(this.result);
       });

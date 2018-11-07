@@ -1,14 +1,14 @@
 <div class="container">
     <div class="img-container"  *ngFor="let i of sliderArray; let select = index;"
          [ngClass]="{'selected': select == selectedIndex}">
-      <img src="{{i.img | async}}" alt="{{i.alt}}" >
+         <img src="{{i.urlToImage}}" alt="{{i.alt}}" >
     </div>
   
     <!--</div>-->
     <div [ngStyle]="{'transform': 'translateY('+ transform + '%' +')', 'transition': '.8s'}">
       <div class="text-container">
         <div class="page-text" *ngFor="let i of sliderArray;let select = index;" [ngClass]="{'selected': select == selectedIndex}">
-          <h3>{{i.text}}</h3>
+          <h3>{{i.title}}</h3>
         </div>
       </div>
     </div>

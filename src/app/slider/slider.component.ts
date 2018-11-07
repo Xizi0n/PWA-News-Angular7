@@ -12,11 +12,11 @@ export class SliderComponent implements OnInit {
   selectedIndex: number;
   transform: number;
   sliderArray = [];
+  // sliderArray = [];
   constructor(private newsService: NewsService) {
     this.selectedIndex = 0;
     this.transform = 100;
-    this.sliderArray = this.newsService.getNews();
-    console.log('sliderArray' + this.sliderArray);
+
   }
 
   /*sliderArray = [
@@ -27,13 +27,16 @@ export class SliderComponent implements OnInit {
     {img: 'http://bloquo.cc/img/works/5.jpg', alt: '', text: '365 Days Of weddings a year'}
   ];*/
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.sliderArray = this.newsService.getNews();
+  }
 
   selected(x) {
     this.downSelected(x);
     this.selectedIndex = x;
 
    }
+
 
    keySelected(x) {
      this.downSelected(x);

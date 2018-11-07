@@ -22,24 +22,18 @@ export class NewsService {
   getNews(): News[] {
     const myNews: News[] = [];
     this.http.get(this.testUrl)
-      .subscribe( data => {
+      .subscribe(( data: any) => {
         data.articles.forEach(element => {
-          /*const temp = new News(element.author, element.title, element.description,
-                          element.content, element.publishedAt, element.source,
-                          element.url, element.urlToImage);*/
 
-          if (element.urlToImage !== undefined && element.urlToImage !== null ) {
-            const temp = {
-              img: element.urlToImage,
-              alt: '',
-              text: element.title
-            };
-            this.result.push(temp);
+          if (element.urlToImage !== null && element.urlToImage !== undefined) {
+            this.result.push( new News(element.author, element.title, element.description,
+              element.content, element.publishedAt, element.source,
+              element.url, element.urlToImage));
           }
         });
-        console.log(this.result);
+        // console.log(this.result);
       });
-    return myNews;
+    return this.result;
   }
 
   /*getHeadlineImages(): Promise<any> {

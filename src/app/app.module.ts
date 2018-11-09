@@ -26,8 +26,10 @@ import { CoreModule } from './core/core.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NewsService } from './news.service';
 import { News } from './model/news.model';
+import {FirestoreService } from './firestore.service';
 
 
+const settings = {timestampsInSnapshots: true};
 const config = {
   apiKey: 'AIzaSyB7d-qHu0d592K9CKLFL9xyfaOcjWDHLak',
   authDomain: 'pwa-news-d5a07.firebaseapp.com',
@@ -63,7 +65,8 @@ const config = {
     CoreModule
   ],
   providers: [
-    NewsService
+    NewsService,
+    FirestoreService
   ],
   bootstrap: [AppComponent]
 })

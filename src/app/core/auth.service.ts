@@ -66,4 +66,8 @@ export class AuthService {
     return userRef.set(data);
   }
 
+  private getDocument() {
+    console.log(this.afs.doc('/Users').get());
+  }
+
 }

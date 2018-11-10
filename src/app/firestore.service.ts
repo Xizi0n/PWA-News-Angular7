@@ -82,4 +82,15 @@ export class FirestoreService {
 
     favref.add(article);
   }
+
+  deleteFavourite(Uuid: string, favId: string) {
+    const favref = firebase.firestore().collection('Users').doc(Uuid).collection('Favorites').doc(favId);
+    favref.delete()
+      .then(() => {
+        console.log('Sikeres törlés');
+      })
+      .catch (err => {
+        console.log('ERROR' + err);
+      });
+  }
 }

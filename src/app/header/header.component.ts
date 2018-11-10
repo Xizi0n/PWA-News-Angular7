@@ -25,7 +25,9 @@ export class HeaderComponent implements OnInit {
       title: 'Törőcsik Franciska: Nem gondolják rólam, hogy van humorom',
       url: 'https://hvg.hu/kultura/20181109_A_legmenobb_fiatal_magyar_szinesznok_1_Torocsik_Franciska'
     };
-    this.fservice.addFavorite(asd, 'CDAU7NhPZt9FIZdFtr9t');
+    // this.fservice.addFavorite(asd, 'CDAU7NhPZt9FIZdFtr9t');
+
+    this.fservice.deleteFavourite('CDAU7NhPZt9FIZdFtr9t', '79bh4HEe1YzJ0bZOgcso');
   }
 
 }

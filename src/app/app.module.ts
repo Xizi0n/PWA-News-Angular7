@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AngularWebStorageModule } from 'angular-web-storage';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -56,6 +57,7 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularWebStorageModule,
     HttpClientModule,
     AppRoutingModule,
     MatButtonModule,

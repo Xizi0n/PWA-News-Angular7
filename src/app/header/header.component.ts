@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import { Article } from '../firestore.service';
+import { LocalStorageService } from 'angular-web-storage';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
 
-  constructor(private fservice: FirestoreService) { }
+  isUserLoggedIn = this.auth.isUserAuthenticated;
+
+  constructor(private fservice: FirestoreService, public local: LocalStorageService, private auth: AuthService) { }
 
   ngOnInit() {
+
     this.fservice.getUsers()
       .subscribe(data => console.log(data));
 
@@ -28,6 +33,15 @@ export class HeaderComponent implements OnInit {
     // this.fservice.addFavorite(asd, 'CDAU7NhPZt9FIZdFtr9t');
 
     this.fservice.deleteFavourite('CDAU7NhPZt9FIZdFtr9t', '79bh4HEe1YzJ0bZOgcso');
+  }
+
+  ngDoCheck() {
+    this.isUserLoggedIn = this.auth.isUserAuthenticated;
+    console.log('DOcheck');
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }

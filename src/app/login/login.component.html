@@ -4,17 +4,17 @@
       <h4 class="center">Bejelentkezés<hr></h4>
 
       <mat-form-field>
-        <input class="maxwidth" type="email" matInput placeholder="E-mail">
+        <input [(ngModel)]="email" class="maxwidth" type="email" matInput placeholder="E-mail">
       </mat-form-field>
     
       <mat-form-field>
-        <input matInput type="password" placeholder="Jelszó">
+        <input [(ngModel)]="pass" matInput type="password" placeholder="Jelszó">
       </mat-form-field>
 
       
       <button mat-button color="primary" class="maxwidth" (click)="loginWithGoogle()">Login With google!</button>
     
-      <button mat-raised-button color="primary" type="submit" class="maxwidth">Bejelentkezés</button>
+      <button mat-raised-button (click)="loginWithEmailAndPassword()" color="primary" type="submit" class="maxwidth">Bejelentkezés</button>
       <p class="center">Nem vagy még tag? <a routerLink="/registration">Regisztrálj</a></p>
   </div>
 

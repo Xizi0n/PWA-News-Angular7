@@ -4,27 +4,27 @@
       <h4 class="center">Regisztráció<hr></h4>
 
       <mat-form-field>
-        <input class="maxwidth" type="email" matInput placeholder="Vezetéknév">
+        <input [(ngModel)]="user.vezeteknev" class="maxwidth" type="text" matInput placeholder="Vezetéknév">
       </mat-form-field>
 
       <mat-form-field>
-        <input class="maxwidth" type="email" matInput placeholder="Keresztnév">
+        <input [(ngModel)]="user.keresztnev"class="maxwidth" type="text" matInput placeholder="Keresztnév">
       </mat-form-field>
       
       <mat-form-field>
-        <input class="maxwidth" type="email" matInput placeholder="E-mail">
+        <input [(ngModel)]="user.email"class="maxwidth" type="email" matInput placeholder="E-mail">
       </mat-form-field>
     
       <mat-form-field>
-        <input matInput type="password" placeholder="Jelszó">
+        <input [(ngModel)]="user.pass" matInput type="password" placeholder="Jelszó">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput type="password" placeholder="Jelszó mégegyszer">
+        <input [(ngModel)]="user.passagain"matInput type="password" placeholder="Jelszó mégegyszer">
       </mat-form-field>
     
     
-      <button mat-raised-button color="primary" type="submit" class="maxwidth">Regisztrálok!</button>
+      <button mat-raised-button (click)="register()" color="primary" type="submit" class="maxwidth">Regisztrálok!</button>
       <p class="center">Már tag vagy? <a routerLink="/login">Jelentkezz be!</a></p>
   </div>
 

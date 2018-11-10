@@ -26,7 +26,7 @@ export interface Article {
 })
 export class FirestoreService {
 
-  ref = firebase.firestore().collection('Users');
+  ref = firebase.firestore().collection('users');
 
   usersCollection: AngularFirestoreCollection;
   users: Observable<User[]>;
@@ -38,9 +38,9 @@ export class FirestoreService {
   getUsers(): Observable<any> {
     return new Observable((observer) => {
       this.ref.onSnapshot((querySnapshot) => {
-        let users = [];
+        const users = [];
         querySnapshot.forEach((doc) => {
-          let data = doc.data();
+          const data = doc.data();
           console.log(data);
           users.push({
             email: data.email,
@@ -58,12 +58,12 @@ export class FirestoreService {
   }
 
   getFavorites(uid: string): Observable<any> {
-    const favref = firebase.firestore().collection('Users').doc(uid).collection('Favorites');
-    return new Observable<Article>( (observer) => {
+    const favref = firebase.firestore().collection('users').doc(uid).collection('Favorites');
+    return new Observable<Article[]>((observer) => {
       favref.onSnapshot((querySnapshot) => {
         const favorites = [];
         querySnapshot.forEach((doc) => {
-          let data = doc.data();
+          const data = doc.data();
           console.log(data);
           favorites.push({
             description: data.description,
@@ -77,19 +77,19 @@ export class FirestoreService {
     });
   }
 
-  addFavorite( article: Article, uid: string) {
-    const favref = firebase.firestore().collection('Users').doc(uid).collection('Favorites');
+  addFavorite(article: Article, uid: string) {
+    const favref = firebase.firestore().collection('users').doc(uid).collection('Favorites');
 
     favref.add(article);
   }
 
   deleteFavourite(Uuid: string, favId: string) {
-    const favref = firebase.firestore().collection('Users').doc(Uuid).collection('Favorites').doc(favId);
+    const favref = firebase.firestore().collection('users').doc(Uuid).collection('Favorites').doc(favId);
     favref.delete()
       .then(() => {
         console.log('Sikeres törlés');
       })
-      .catch (err => {
+      .catch(err => {
         console.log('ERROR' + err);
       });
   }

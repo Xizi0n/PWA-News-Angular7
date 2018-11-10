@@ -15,8 +15,8 @@ export class HeaderComponent implements OnInit {
     this.fservice.getUsers()
       .subscribe(data => console.log(data));
 
-    this.fservice.getFavorites('CDAU7NhPZt9FIZdFtr9t')
-      .subscribe((data => console.log('Data')));
+    this.fservice.getFavorites('Zp1MkrociFWMGANW1acVSDF66iy2')
+      .subscribe((data => console.log('Data' + JSON.stringify(data))));
 
 
     const asd: Article = {

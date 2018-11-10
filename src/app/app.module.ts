@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,11 +23,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { SliderComponent } from './slider/slider.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HeaderComponent } from './header/header.component';
-import { CoreModule } from './core/core.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NewsService } from './news.service';
-import { News } from './model/news.model';
 import {FirestoreService } from './firestore.service';
+import { AuthService } from './auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 const settings = {timestampsInSnapshots: true};
@@ -54,6 +55,7 @@ const config = {
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     HttpClientModule,
     AppRoutingModule,
     MatButtonModule,
@@ -62,11 +64,12 @@ const config = {
     MatIconModule,
     MatInputModule,
     MatToolbarModule,
-    CoreModule
   ],
   providers: [
     NewsService,
-    FirestoreService
+    FirestoreService,
+    AuthService,
+    AngularFirestore
   ],
   bootstrap: [AppComponent]
 })

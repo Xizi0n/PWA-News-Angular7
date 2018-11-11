@@ -11,6 +11,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -30,6 +32,8 @@ import { NewsService } from './news.service';
 import {FirestoreService } from './firestore.service';
 import { AuthService } from './auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { NewslistComponent } from './newslist/newslist.component';
+import { NewslistitemComponent } from './newslistitem/newslistitem.component';
 
 
 const settings = {timestampsInSnapshots: true};
@@ -50,7 +54,9 @@ const config = {
     SliderComponent,
     WelcomeComponent,
     HeaderComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    NewslistComponent,
+    NewslistitemComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +70,7 @@ const config = {
     MatButtonModule,
     MatFormFieldModule,
     MatGridListModule,
+    MatCardModule,
     MatIconModule,
     MatInputModule,
     MatToolbarModule,

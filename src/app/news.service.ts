@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { News } from './model/news.model';
-import { identifierModuleUrl } from '@angular/compiler';
+import { Observable, of } from 'rxjs';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable({
   providedIn: 'root'
@@ -16,24 +17,28 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  result = [];
+  result: News[] = [];
 
 
-  getNews(): News[] {
-    const myNews: News[] = [];
-    this.http.get(this.testUrl)
-      .subscribe(( data: any) => {
-        data.articles.forEach(element => {
+  getNews(): Observable<News[]> {
 
-          if (element.urlToImage !== null && element.urlToImage !== undefined) {
-            this.result.push( new News(element.author, element.title, element.description,
-              element.content, element.publishedAt, element.source,
-              element.url, element.urlToImage));
-          }
+    const news = new Observable<News[]>(subsciber => {
+      this.http.get(this.testUrl)
+        .subscribe((data: any) => {
+          console.log('datajson' + data.json);
+          data.articles.forEach(element => {
+
+            if (element.urlToImage !== null && element.urlToImage !== undefined) {
+              this.result.push(new News(element.author, element.title, element.description,
+                element.content, element.publishedAt, element.source,
+                element.url, element.urlToImage));
+            }
+          });
+          console.log('getnews after get: ' + JSON.stringify(this.result));
+          subsciber.next(this.result);
         });
-        // console.log(this.result);
-      });
-    return this.result;
+    });
+    return news;
   }
 
   /*getHeadlineImages(): Promise<any> {

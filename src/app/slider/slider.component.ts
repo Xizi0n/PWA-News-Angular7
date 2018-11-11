@@ -28,7 +28,10 @@ export class SliderComponent implements OnInit {
   ];*/
 
   ngOnInit() {
-    this.sliderArray = this.newsService.getNews();
+    this.newsService.getNews().subscribe(
+      data => {
+        this.sliderArray = data;
+      });
   }
 
   selected(x) {

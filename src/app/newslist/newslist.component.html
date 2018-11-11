@@ -1,0 +1,5 @@
+<div class="wrapper" *ngIf="newsArrived">
+    <div *ngFor="let news of myNews">
+        <app-newslistitem [news]="news" ></app-newslistitem>
+    </div>
+</div>

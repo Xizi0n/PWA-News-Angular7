@@ -37,7 +37,6 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.isUserLoggedIn = this.auth.isUserAuthenticated;
-    console.log('DOcheck');
   }
 
   logout() {

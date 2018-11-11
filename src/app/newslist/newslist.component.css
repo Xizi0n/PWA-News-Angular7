@@ -1,5 +1,10 @@
 .wrapper {
     display: grid;
-    grid-template-columns: 30% 30% 30%;
-    grid-gap: 10px;
+    grid-template-columns: 33% 33% 33%;
+    grid-gap: 0px;
+    grid-column-gap: 0px;
+    background-color: #DEDEDE;
   }
+.center {
+  margin: auto;
+}

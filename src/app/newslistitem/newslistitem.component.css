@@ -1,10 +1,12 @@
 .example-card {
     max-width: 400px;
+    max-height: 600px;
   }
   
   .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
+    
   }
 
   .box {
@@ -12,4 +14,11 @@
     border-radius: 5px;
     padding: 20px;
     font-size: 150%;
+    margin: 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
   }

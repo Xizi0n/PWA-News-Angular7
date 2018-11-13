@@ -9,12 +9,17 @@ import { News } from '../model/news.model';
 export class NewslistitemComponent implements OnInit {
 
   @Input() news: News;
+  clicked: boolean;
 
   constructor() {
     console.log('ListItem ' + this.news);
    }
 
   ngOnInit() {
+  }
+
+  itemClicked() {
+    this.clicked = true;
   }
 
 }

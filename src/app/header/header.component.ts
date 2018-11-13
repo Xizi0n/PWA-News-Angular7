@@ -1,8 +1,9 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, EventEmitter, Output } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import { Article } from '../firestore.service';
 import { LocalStorageService } from 'angular-web-storage';
 import { AuthService } from '../auth.service';
+import { NewsService } from '../news.service';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +12,17 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent implements OnInit, DoCheck {
 
+  @Output() newsSearched = new EventEmitter();
   isUserLoggedIn = this.auth.isUserAuthenticated;
+  search: string;
 
-  constructor(private fservice: FirestoreService, public local: LocalStorageService, private auth: AuthService) { }
+  constructor(private fservice: FirestoreService, public local: LocalStorageService, private auth: AuthService,
+    private newsService: NewsService) { }
 
   ngOnInit() {
 
     this.fservice.getUsers()
-      .subscribe(data => console.log(data));
+      .subscribe(data => console.log('getuser ' + data));
 
     this.fservice.getFavorites('Zp1MkrociFWMGANW1acVSDF66iy2')
       .subscribe((data => console.log('Data' + JSON.stringify(data))));
@@ -35,6 +39,16 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.fservice.deleteFavourite('CDAU7NhPZt9FIZdFtr9t', '79bh4HEe1YzJ0bZOgcso');
   }
 
+  keyDownFunction(event) {
+    if (event.key === 'Enter') {
+      // dosomething
+      this.newsService.query = this.search;
+      this.newsSearched.emit();
+      /*this.newsService.searchNews(this.search)
+        .subscribe(data => console.log('SEARCHEDNEWS:' + this.search + JSON.stringify(data)));*/
+    }
+  }
+
   ngDoCheck() {
     this.isUserLoggedIn = this.auth.isUserAuthenticated;
   }
@@ -42,5 +56,6 @@ export class HeaderComponent implements OnInit, DoCheck {
   logout() {
     this.auth.logout();
   }
+
 
 }

@@ -41,7 +41,7 @@ export class FirestoreService {
         const users = [];
         querySnapshot.forEach((doc) => {
           const data = doc.data();
-          console.log(data);
+          console.log('GetUsers SERVICE: ' + JSON.stringify(data));
           users.push({
             email: data.email,
             kereszt_nev: data.kereszt_nev,

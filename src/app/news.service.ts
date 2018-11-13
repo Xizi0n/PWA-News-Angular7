@@ -9,10 +9,12 @@ import 'rxjs/add/operator/toPromise';
 })
 export class NewsService {
 
-  baseUrl = 'https://newsapi.org/v2/';
-  test = 'top-headlines?country=us&category=business';
+  baseUrl = 'https://newsapi.org/v2/top-headlines?';
+  test = 'country=us&category=business';
   apikey = '&apiKey=ad88b53345fc4d81841c61e9db0ad5ce';
   testUrl = this.baseUrl + this.test + this.apikey;
+  query = 'q=';
+
 
 
   constructor(private http: HttpClient) { }
@@ -21,9 +23,30 @@ export class NewsService {
 
 
   getNews(): Observable<News[]> {
-
     const news = new Observable<News[]>(subsciber => {
       this.http.get(this.testUrl)
+        .subscribe((data: any) => {
+          console.log('datajson' + data.json);
+          data.articles.forEach(element => {
+
+            if (element.urlToImage !== null && element.urlToImage !== undefined) {
+              this.result.push(new News(element.author, element.title, element.description,
+                element.content, element.publishedAt, element.source,
+                element.url, element.urlToImage));
+            }
+          });
+          // console.log('getnews after get: ' + JSON.stringify(this.result));
+          subsciber.next(this.result);
+
+        });
+    });
+    return news;
+  }
+
+  searchNews(search: string) {
+    this.result = [];
+    const news = new Observable<News[]>(subsciber => {
+      this.http.get(this.baseUrl + this.query + search + this.apikey)
         .subscribe((data: any) => {
           console.log('datajson' + data.json);
           data.articles.forEach(element => {

@@ -1,6 +1,7 @@
 <mat-toolbar class="maxwidth" color="primary">
   <span routerLink="" style="cursor:pointer">Fake News</span>
   <span routerLink="newslist" >&nbsp; List News</span>
+  <input placeholder="Search" [(ngModel)]="search" (keydown)="keyDownFunction($event)">
   <span class="spacer"></span>
 
   <div *ngIf="isUserLoggedIn == false" class="button-row">
@@ -9,8 +10,8 @@
   </div>
 
   <div *ngIf="isUserLoggedIn == true" class="button-row">
-    <span>Üdv, {{local.get('email')}}</span>
-    <button mat-button (click)="logout()" ><mat-icon>exit_to_app</mat-icon>&nbsp;Kijelentkezés</button>
+    <span routerLink="/profile">Üdv, {{local.get('email')}}</span>
+    <button mat-button (click)="logout()" routerLink="" ><mat-icon>exit_to_app</mat-icon>&nbsp;Kijelentkezés</button>
 </div>
 
 </mat-toolbar>

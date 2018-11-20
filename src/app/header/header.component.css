@@ -17,3 +17,20 @@
 mat-toolbar {
     background-color: #3C3C3C;
 }
+
+#newssearch {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: none;
+    height: 40%;
+    width: 30%;
+    font-size: 20px;
+}
+
+#searchButton {
+    background-color: white;
+    border:none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 27.59px;
+}

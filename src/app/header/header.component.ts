@@ -41,11 +41,10 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   keyDownFunction(event) {
     if (event.key === 'Enter') {
-      // dosomething
-      this.newsService.query = this.search;
-      this.newsSearched.emit();
-      /*this.newsService.searchNews(this.search)
-        .subscribe(data => console.log('SEARCHEDNEWS:' + this.search + JSON.stringify(data)));*/
+      // this.newsService.query = this.search;
+      this.newsSearched.emit(this.search);
+      this.newsService.searchNews(this.search)
+        .subscribe(data => console.log('SEARCHEDNEWS:' + this.search + JSON.stringify(data)));
     }
   }
 

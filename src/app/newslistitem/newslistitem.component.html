@@ -13,8 +13,8 @@
       </mat-card-content>
     </a>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <button mat-raised-button *ngIf="isFavourite == false" (click)="favouriteClicked()">Add to favorites</button>
+      <button mat-raised-button *ngIf="isFavourite == true" (click)="favouriteClicked()" color="primary"><mat-icon color="warn">favorite</mat-icon> Favorite</button>
     </mat-card-actions>
   </mat-card>
 </div>

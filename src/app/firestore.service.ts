@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app';
 import firestore from 'firebase/firestore';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { News } from './model/news.model';
 
 
 interface User {
@@ -77,10 +78,19 @@ export class FirestoreService {
     });
   }
 
-  addFavorite(article: Article, uid: string) {
+  addFavorite(article: News, uid: string) {
     const favref = firebase.firestore().collection('users').doc(uid).collection('Favorites');
-
-    favref.add(article);
+    const fsArticle = {
+      author: article.author,
+      title: article.title,
+      description: article.description,
+      content: article.content,
+      publishedAt: article.publishedAt,
+      source: article.source,
+      url: article.url,
+      urlToImage: article.urlToImage
+    };
+    favref.add(fsArticle);
   }
 
   deleteFavourite(Uuid: string, favId: string) {

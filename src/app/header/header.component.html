@@ -1,17 +1,25 @@
 <mat-toolbar class="maxwidth" color="primary">
-  <span routerLink="" style="cursor:pointer">Fake News</span>
-  <span routerLink="newslist" >&nbsp; List News</span>
-  <input placeholder="Search" [(ngModel)]="search" (keydown)="keyDownFunction($event)">
-  <span class="spacer"></span>
+    <span routerLink="" style="cursor:pointer">Fake News</span>
+    <span routerLink="newslist">&nbsp; List News</span>
+    <span class="spacer"></span>
+    <input id="newssearch" placeholder="Search" [(ngModel)]="search" (keydown)="keyDownFunction($event)">
+    <button id="searchButton"><mat-icon color="primary">search</mat-icon></button>
+    <span class="spacer"></span>
 
-  <div *ngIf="isUserLoggedIn == false" class="button-row">
-      <button mat-button routerLink="/registration"> <mat-icon>person_add</mat-icon>&nbsp;Regisztráció</button>
-      <button mat-button routerLink="/login"> <mat-icon>person</mat-icon>&nbsp;Bejelentkezés</button>
-  </div>
+    <div *ngIf="isUserLoggedIn == false" class="button-row">
+        <button mat-button routerLink="/registration">
+            <mat-icon>person_add</mat-icon>&nbsp;Regisztráció
+        </button>
+        <button mat-button routerLink="/login">
+            <mat-icon>person</mat-icon>&nbsp;Bejelentkezés
+        </button>
+    </div>
 
-  <div *ngIf="isUserLoggedIn == true" class="button-row">
-    <span routerLink="/profile">Üdv, {{local.get('email')}}</span>
-    <button mat-button (click)="logout()" routerLink="" ><mat-icon>exit_to_app</mat-icon>&nbsp;Kijelentkezés</button>
-</div>
+    <div *ngIf="isUserLoggedIn == true" class="button-row">
+        <span routerLink="/profile">Üdv, {{local.get('email')}}</span>
+        <button mat-button (click)="logout()" routerLink="">
+            <mat-icon>exit_to_app</mat-icon>&nbsp;Kijelentkezés
+        </button>
+    </div>
 
 </mat-toolbar>

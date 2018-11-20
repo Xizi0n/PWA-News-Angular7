@@ -5,11 +5,11 @@ import { AuthService } from '../auth.service';
 import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
-  selector: 'app-newslistitem',
-  templateUrl: './newslistitem.component.html',
-  styleUrls: ['./newslistitem.component.css']
+  selector: 'app-favourite-list-item',
+  templateUrl: './favourite-list-item.component.html',
+  styleUrls: ['./favourite-list-item.component.css']
 })
-export class NewslistitemComponent implements OnInit {
+export class FavouriteListItemComponent implements OnInit {
 
   @Input() news: News;
   isFavourite = false;
@@ -21,14 +21,8 @@ export class NewslistitemComponent implements OnInit {
   ngOnInit() {
   }
 
-  favouriteClicked() {
-    this.isFavourite = !this.isFavourite;
-    if (this.authService.isUserAuthenticated) {
-      console.log('We have a logged in user');
-      if (this.isFavourite === true) {
-        this.fService.addFavorite(this.news, this.local.get('uid'));
-      }
-    }
+  unfavoriteClicked() {
+
   }
 
 }

@@ -38,6 +38,8 @@ import { NewslistitemComponent } from './newslistitem/newslistitem.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BodyComponent } from './body/body.component';
 import { NewsListItemDetailComponent } from './news-list-item-detail/news-list-item-detail.component';
+import { FavoriteListComponent } from './favorite-list/favorite-list.component';
+import { FavouriteListItemComponent } from './favourite-list-item/favourite-list-item.component';
 
 
 const settings = {timestampsInSnapshots: true};
@@ -63,7 +65,9 @@ const config = {
     NewslistitemComponent,
     ProfileComponent,
     BodyComponent,
-    NewsListItemDetailComponent
+    NewsListItemDetailComponent,
+    FavoriteListComponent,
+    FavouriteListItemComponent
   ],
   imports: [
     BrowserModule,

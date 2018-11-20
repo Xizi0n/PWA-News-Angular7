@@ -5,13 +5,15 @@ import { RegistrationComponent } from './registration/registration.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NewslistComponent } from './newslist/newslist.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: '', component: WelcomeComponent},
   { path: 'newslist', component: NewslistComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'favorites', component: FavoriteListComponent}
 ];
 
 @NgModule({

@@ -65,13 +65,15 @@ export class FirestoreService {
         const favorites = [];
         querySnapshot.forEach((doc) => {
           const data = doc.data();
-          console.log(data);
-          favorites.push({
+          // console.log(data);
+          /* favorites.push({
             description: data.description,
             photoUrl: data.photoUrl,
             title: data.title,
             url: data.url
-          });
+          }); */
+          favorites.push(new News(data.author, data.title, data.description, data.content,
+            data.publishedAt, data.source, data.url, data.urlToImage));
         });
         observer.next(favorites);
       });

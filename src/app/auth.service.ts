@@ -22,16 +22,24 @@ export class AuthService {
   constructor(public afAuth: AngularFireAuth, private local: LocalStorageService) {
   }
 
-  registerUser(user: User) {
+  registerUser(user: User): Promise<any> {
     const vezeteknev = user.vezeteknev;
     const keresztnev = user.keresztnev;
     const email = user.email;
     const pass = user.pass;
-    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pass)
+    const result$ = new Promise( (resolve, reject) => {
+      this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pass)
       .then( (data) => {
         console.log('Sikeres regisztráció ' + JSON.stringify(data));
+        resolve(data);
       })
-      .catch( err => console.log('ERROR' + err) );
+      .catch( err => {
+        console.log('ERROR' + err);
+        reject(err);
+      });
+    });
+    return result$;
+
   }
 
   emailAndPasswordLogin(email: string, pass: string) {

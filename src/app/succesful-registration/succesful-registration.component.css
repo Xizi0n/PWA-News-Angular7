@@ -1,0 +1,27 @@
+.success {
+    background-color: #D0ECDA;
+    border-radius: 5px;
+    text-align: center;
+    color: #005846;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 20px;
+}
+
+.highlight {
+    font-size: 3em;
+}
+
+p {
+    margin-top: 10%;
+    font-size: 2em;
+}
+
+span:hover {
+    color: black;
+}
+
+.link {
+    text-decoration: underline;
+}

@@ -30,9 +30,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { HeaderComponent } from './header/header.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NewsService } from './news.service';
-import {FirestoreService } from './firestore.service';
+import { FirestoreService } from './firestore.service';
 import { AuthService } from './auth.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { NewslistComponent } from './newslist/newslist.component';
 import { NewslistitemComponent } from './newslistitem/newslistitem.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -40,6 +40,7 @@ import { BodyComponent } from './body/body.component';
 import { NewsListItemDetailComponent } from './news-list-item-detail/news-list-item-detail.component';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 import { FavouriteListItemComponent } from './favourite-list-item/favourite-list-item.component';
+import { SuccesfulRegistrationComponent } from './succesful-registration/succesful-registration.component';
 
 
 const settings = {timestampsInSnapshots: true};
@@ -67,12 +68,14 @@ const config = {
     BodyComponent,
     NewsListItemDetailComponent,
     FavoriteListComponent,
-    FavouriteListItemComponent
+    FavouriteListItemComponent,
+    SuccesfulRegistrationComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(config),
+    AngularFirestoreModule.enablePersistence(),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularWebStorageModule,

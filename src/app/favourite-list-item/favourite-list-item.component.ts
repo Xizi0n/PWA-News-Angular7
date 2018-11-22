@@ -22,7 +22,7 @@ export class FavouriteListItemComponent implements OnInit {
   }
 
   unfavoriteClicked() {
-
+    // this.fService.deleteFavourite(this.local.get('uid'),  );
   }
 
 }

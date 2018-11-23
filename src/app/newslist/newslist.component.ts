@@ -16,17 +16,17 @@ export class NewslistComponent implements OnInit {
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
-    this.getNews();
-    this.searchNews();
+    // this.getNews();
+    // this.searchNews();
   }
 
 
   getNews() {
     this.newsService.getNews()
       .subscribe(data => {
-        console.log('GotNews' + JSON.stringify(data));
+        // console.log('GotNews' + JSON.stringify(data));
         this.myNews = data;
-        console.log('myNews ', this.myNews);
+        // console.log('myNews ', this.myNews);
         this.newsArrived = true;
       });
 
@@ -35,10 +35,10 @@ export class NewslistComponent implements OnInit {
   searchNews() {
     this.newsService.searchNews(this.query)
       .subscribe(data => {
-        console.log('SearchedNews' + JSON.stringify(data));
+        // console.log('SearchedNews' + JSON.stringify(data));
         this.myNews = [];
         this.myNews = data;
-        console.log('myNews ', this.myNews);
+        // console.log('myNews ', this.myNews);
         this.newsArrived = true;
       });
   }

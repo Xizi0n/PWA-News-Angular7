@@ -1,1 +1,11 @@
-<app-slider></app-slider>
+<mat-tab-group (selectedTabChange)="getLocalNews($event)">
+    <mat-tab (click)="asd()" label="Top headlines from the US"><app-newslist [myNews]="localNews" ></app-newslist></mat-tab>
+    <mat-tab label="Top headlines from Hungary"><app-newslist  [myNews]="localNews"></app-newslist></mat-tab>
+    <mat-tab label="Top headlines from the UK"><app-newslist  [myNews]="localNews"></app-newslist></mat-tab>
+    <mat-tab label="Top headlines from Russia"><app-newslist  [myNews]="localNews"></app-newslist></mat-tab>
+    <mat-tab label="Top headlines from France"><app-newslist  [myNews]="localNews"></app-newslist></mat-tab>
+    <mat-tab label="Top headlines from Germany"><app-newslist  [myNews]="localNews"></app-newslist></mat-tab>
+    <mat-tab label="Top headlines from China"><app-newslist  [myNews]="localNews"></app-newslist></mat-tab>
+    <mat-tab label="Top headlines from Canada"><app-newslist  [myNews]="localNews"></app-newslist></mat-tab>
+    <mat-tab label="Top headlines from Czech Republic"><app-newslist  [myNews]="localNews"></app-newslist></mat-tab>
+  </mat-tab-group>

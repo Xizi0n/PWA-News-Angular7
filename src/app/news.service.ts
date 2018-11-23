@@ -21,12 +21,34 @@ export class NewsService {
 
   result: News[] = [];
 
+  getLocalNews(country: string): Observable<News[]> {
+    this.result = [];
+    const news = new Observable<News[]>(subsciber => {
+      console.log(this.baseUrl + 'country=' + country + this.apikey);
+      this.http.get(this.baseUrl + 'country=' + country + this.apikey)
+        .subscribe((data: any) => {
+          // console.log('datajson' + JSON.stringify(data));
+          data.articles.forEach(element => {
+
+            if (element.urlToImage !== null && element.urlToImage !== undefined) {
+              this.result.push(new News(element.author, element.title, element.description,
+                element.content, element.publishedAt, element.source,
+                element.url, element.urlToImage));
+            }
+          });
+          subsciber.next(this.result);
+
+        });
+    });
+    return news;
+  }
+
 
   getNews(): Observable<News[]> {
     const news = new Observable<News[]>(subsciber => {
       this.http.get(this.testUrl)
         .subscribe((data: any) => {
-          console.log('datajson' + data.json);
+          // console.log('datajson' + data.json);
           data.articles.forEach(element => {
 
             if (element.urlToImage !== null && element.urlToImage !== undefined) {
@@ -48,7 +70,7 @@ export class NewsService {
     const news = new Observable<News[]>(subsciber => {
       this.http.get(this.baseUrl + this.query + search + this.apikey)
         .subscribe((data: any) => {
-          console.log('datajson' + data.json);
+          // console.log('datajson' + data.json);
           data.articles.forEach(element => {
 
             if (element.urlToImage !== null && element.urlToImage !== undefined) {
@@ -57,7 +79,7 @@ export class NewsService {
                 element.url, element.urlToImage));
             }
           });
-          console.log('getnews after get: ' + JSON.stringify(this.result));
+          // console.log('getnews after get: ' + JSON.stringify(this.result));
           subsciber.next(this.result);
         });
     });

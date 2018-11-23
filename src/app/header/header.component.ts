@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   ngOnInit() {
 
-    this.fservice.getUsers()
-      .subscribe(data => console.log('getuser ' + data));
+    /* this.fservice.getUsers()
+      .subscribe( data => console.log('getuser ' + data));
 
     this.fservice.getFavorites('Zp1MkrociFWMGANW1acVSDF66iy2')
       .subscribe((data => console.log('Data' + JSON.stringify(data))));
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit, DoCheck {
     };
     // this.fservice.addFavorite(asd, 'CDAU7NhPZt9FIZdFtr9t');
 
-    this.fservice.deleteFavourite('CDAU7NhPZt9FIZdFtr9t', '79bh4HEe1YzJ0bZOgcso');
+    this.fservice.deleteFavourite('CDAU7NhPZt9FIZdFtr9t', '79bh4HEe1YzJ0bZOgcso'); */
   }
 
   keyDownFunction(event) {

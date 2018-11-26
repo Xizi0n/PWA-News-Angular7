@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NewsService } from '../news.service';
 import { News } from '../model/news.model';
 
@@ -9,7 +9,7 @@ import { News } from '../model/news.model';
 })
 export class NewslistComponent implements OnInit {
 
-  myNews: News[];
+  @Input() myNews: News[];
   newsArrived = false;
   query: string;
 

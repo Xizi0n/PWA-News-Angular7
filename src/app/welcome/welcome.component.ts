@@ -15,11 +15,25 @@ export class WelcomeComponent implements OnInit {
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
+    this.getNewsOnInit('us');
   }
 
 
   getLocalNews($event) {
     const country = this.dict[$event.index];
+    this.newsService.getLocalNews(country)
+      .subscribe(data => {
+        this.localNews = [];
+        // console.log('LocalNews: ' + JSON.stringify(data));
+        this.localNews = data;
+        console.log(this.localNews);
+      },
+        err => {
+          console.log('HIba' + err);
+        });
+  }
+
+  getNewsOnInit(country) {
     this.newsService.getLocalNews(country)
       .subscribe(data => {
         this.localNews = [];

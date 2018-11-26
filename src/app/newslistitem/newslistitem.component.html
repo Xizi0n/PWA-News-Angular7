@@ -13,8 +13,9 @@
       </mat-card-content>
     </a>
     <mat-card-actions>
-      <button mat-raised-button *ngIf="isFavourite == false" (click)="favouriteClicked()">Add to favorites</button>
-      <button mat-raised-button *ngIf="isFavourite == true" (click)="favouriteClicked()" color="primary"><mat-icon color="warn">favorite</mat-icon> Favorite</button>
+      <button mat-raised-button *ngIf="isFavourite == false" (click)="favouriteClicked()">Kedvencekhez adom!</button>
+      <button mat-raised-button *ngIf="isFavourite == true" (click)="favouriteClicked()" color="primary"><mat-icon color="warn">favorite</mat-icon> Kedvenc</button>
+      <button mat-raised-button *ngIf="isFavourite == true" (click)="removeFavourite()" color="warn"><mat-icon style="color:black">remove_circle</mat-icon> Kedvenc törlése</button>
     </mat-card-actions>
   </mat-card>
 </div>

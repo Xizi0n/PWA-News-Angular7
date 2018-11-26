@@ -35,4 +35,9 @@ export class NewslistitemComponent implements OnInit {
     }
   }
 
+  removeFavourite() {
+    this.fService.deleteFavourite(this.local.get('uid'), this.news);
+    this.isFavourite = false;
+  }
+
 }

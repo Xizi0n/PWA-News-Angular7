@@ -15,7 +15,7 @@
     </div>
 
     <div *ngIf="isUserLoggedIn == true" class="button-row">
-        <span routerLink="/profile">Üdv, {{local.get('email')}}</span>
+        <span routerLink="/favorites">Üdv, {{local.get('email')}}</span>
         <button mat-button (click)="logout()" routerLink="">
             <mat-icon>exit_to_app</mat-icon>&nbsp;Kijelentkezés
         </button>

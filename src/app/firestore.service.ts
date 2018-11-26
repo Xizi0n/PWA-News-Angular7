@@ -95,14 +95,16 @@ export class FirestoreService {
     favref.add(fsArticle);
   }
 
-  deleteFavourite(Uuid: string, favId: string) {
-    const favref = firebase.firestore().collection('users').doc(Uuid).collection('Favorites').doc(favId);
-    favref.delete()
-      .then(() => {
-        console.log('Sikeres törlés');
+  deleteFavourite(Uuid: string, news: News) {
+
+    const favoritesQuery = firebase.firestore().collection('users').doc(Uuid).collection('Favorites').where('title', '==', news.title);
+    favoritesQuery.get()
+      .then(data => {
+        console.log(data);
+        data.docs[0].ref.delete()
+        .then( res => console.log('Sikeres törlés ' + res))
+        .catch(error => console.log(error));
       })
-      .catch(err => {
-        console.log('ERROR' + err);
-      });
+      .catch (err => console.log(err));
   }
 }

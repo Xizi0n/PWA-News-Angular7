@@ -12,17 +12,17 @@ import { LocalStorageService } from 'angular-web-storage';
 export class FavouriteListItemComponent implements OnInit {
 
   @Input() news: News;
-  isFavourite = false;
+  isFavourite = true;
 
-  constructor(private fService: FirestoreService, private authService: AuthService,  private local: LocalStorageService) {
+  constructor(private fService: FirestoreService, private authService: AuthService, private local: LocalStorageService) {
     // console.log('ListItem ' + this.news);
   }
 
   ngOnInit() {
   }
 
-  unfavoriteClicked() {
-    // this.fService.deleteFavourite(this.local.get('uid'),  );
+  removeFavourite() {
+    this.fService.deleteFavourite(this.local.get('uid'), this.news);
   }
 
 }

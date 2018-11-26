@@ -1,19 +1,24 @@
 <div class="box">
-    <mat-card class="example-card">
-      <a href="{{news.url}}">
-        <mat-card-header>
-          <mat-card-title>{{news.title}}</mat-card-title>
-          <mat-card-subtitle>{{news.author}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="{{news.urlToImage}}">
-        <mat-card-content>
-          <p>
-            {{news.description}}
-          </p>
-        </mat-card-content>
-      </a>
-      <mat-card-actions>
-        <button mat-raised-button color="warn" *ngIf="isFavourite == false" (click)="unfavoriteClicked()"><mat-icon>favorite_border</mat-icon> Remove from favorites</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+  <mat-card class="example-card">
+    <a href="{{news.url}}">
+      <mat-card-header>
+        <mat-card-title>{{news.title}}</mat-card-title>
+        <mat-card-subtitle>{{news.author}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{news.urlToImage}}">
+      <mat-card-content>
+        <p>
+          {{news.description}}
+        </p>
+      </mat-card-content>
+    </a>
+    <mat-card-actions>
+      <button mat-raised-button (click)="favouriteClicked()" color="primary">
+        <mat-icon color="warn">favorite</mat-icon> Kedvenc
+      </button>
+      <button mat-raised-button (click)="removeFavourite()" color="warn">
+        <mat-icon style="color:black">remove_circle</mat-icon> Kedvenc törlése
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

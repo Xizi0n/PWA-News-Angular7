@@ -14,7 +14,7 @@ export class NewslistitemComponent implements OnInit {
   @Input() news: News;
   isFavourite = false;
 
-  constructor(private fService: FirestoreService, private authService: AuthService,  private local: LocalStorageService) {
+  constructor(private fService: FirestoreService, private authService: AuthService, private local: LocalStorageService) {
     // console.log('ListItem ' + this.news);
   }
 
@@ -22,12 +22,16 @@ export class NewslistitemComponent implements OnInit {
   }
 
   favouriteClicked() {
-    this.isFavourite = !this.isFavourite;
     if (this.authService.isUserAuthenticated) {
-      console.log('We have a logged in user');
-      if (this.isFavourite === true) {
-        this.fService.addFavorite(this.news, this.local.get('uid'));
+      this.isFavourite = !this.isFavourite;
+      if (this.authService.isUserAuthenticated) {
+        console.log('We have a logged in user');
+        if (this.isFavourite === true) {
+          this.fService.addFavorite(this.news, this.local.get('uid'));
+        }
       }
+    } else {
+      alert('Csak bejelentkezett felhasználók tudnak a kedvencekhez hírt hozzáadni!');
     }
   }
 

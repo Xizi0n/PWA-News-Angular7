@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { LocalStorageService } from 'angular-web-storage';
+import { Router } from '@angular/router';
 
 
 export interface User {
@@ -19,7 +20,7 @@ export class AuthService {
 
   isUserAuthenticated = false;
 
-  constructor(public afAuth: AngularFireAuth, private local: LocalStorageService) {
+  constructor(public afAuth: AngularFireAuth, private local: LocalStorageService, private router: Router, private zone: NgZone) {
   }
 
   registerUser(user: User): Promise<any> {
@@ -49,6 +50,9 @@ export class AuthService {
         this.local.set('uid', data.user.uid );
         this.local.set('email', data.user.email);
         this.isUserAuthenticated = true;
+        this.zone.run(() => {
+          this.router.navigate(['']);
+        });
       })
       .catch( err => console.log('ERROR' + err) );
   }
@@ -62,6 +66,9 @@ export class AuthService {
         this.isUserAuthenticated = true;
         // console.log('UID: ' + this.local.get('uid'));
         // console.log('email ' + this.local.get('email'));
+        this.zone.run(() => {
+          this.router.navigate(['']);
+        });
       })
       .catch((err) => console.log('ERROR ' + err));
   }

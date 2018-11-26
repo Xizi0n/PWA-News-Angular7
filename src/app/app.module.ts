@@ -27,10 +27,8 @@ import { AngularWebStorageModule } from 'angular-web-storage';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { SliderComponent } from './slider/slider.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HeaderComponent } from './header/header.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NewsService } from './news.service';
 import { FirestoreService } from './firestore.service';
 import { AuthService } from './auth.service';
@@ -39,10 +37,10 @@ import { NewslistComponent } from './newslist/newslist.component';
 import { NewslistitemComponent } from './newslistitem/newslistitem.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BodyComponent } from './body/body.component';
-import { NewsListItemDetailComponent } from './news-list-item-detail/news-list-item-detail.component';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 import { FavouriteListItemComponent } from './favourite-list-item/favourite-list-item.component';
 import { SuccesfulRegistrationComponent } from './succesful-registration/succesful-registration.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 
 const settings = {timestampsInSnapshots: true};
@@ -60,18 +58,16 @@ const config = {
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    SliderComponent,
     WelcomeComponent,
     HeaderComponent,
-    UserProfileComponent,
     NewslistComponent,
     NewslistitemComponent,
     ProfileComponent,
     BodyComponent,
-    NewsListItemDetailComponent,
     FavoriteListComponent,
     FavouriteListItemComponent,
-    SuccesfulRegistrationComponent
+    SuccesfulRegistrationComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

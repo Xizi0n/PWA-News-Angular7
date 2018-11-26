@@ -14,6 +14,7 @@ export class NewsService {
   apikey = '&apiKey=ad88b53345fc4d81841c61e9db0ad5ce';
   testUrl = this.baseUrl + this.test + this.apikey;
   query = 'q=';
+  searchedNews: News[] = [];
 
 
 
@@ -80,27 +81,10 @@ export class NewsService {
             }
           });
           // console.log('getnews after get: ' + JSON.stringify(this.result));
+          this.searchedNews = this.result;
           subsciber.next(this.result);
         });
     });
     return news;
   }
-
-  /*getHeadlineImages(): Promise<any> {
-    const images = [];
-    return new Promise( res => {
-      this.http.get(this.testUrl)
-      .subscribe( data => {
-        console.log(data);
-        data.articles.forEach(element => {
-          const item = element.urlToImage;
-          if (item !== null) {
-            images.push(item);
-          }
-        });
-          resolve(images);
-      });
-    });
-
-  }*/
 }
